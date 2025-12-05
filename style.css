@@ -21,6 +21,10 @@
             background-color: var(--bg-dark);
         }
 
+        [hidden] {
+          display: none !important;
+        }
+
         /* Navigation */
         nav {
             background-color: rgba(10, 25, 47, 0.95);
@@ -39,6 +43,35 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 1rem;
+        }
+
+        .lang-toggle {
+          background: var(--accent-color);
+          color: var(--primary-color);
+          border: none;
+          padding: 0.4rem 0.8rem;
+          border-radius: 4px;
+          font-weight: bold;
+          cursor: pointer;
+          transition: background 0.3s ease;
+        }
+
+        .lang-toggle:hover {
+          background: #52e3c2;
+        }
+
+        .lang-wrapper {
+          display: flex;          /* keeps flag glued to button */
+          align-items: center;
+          gap: 0.3rem;            /* tiny gap between button & flag */
+        }
+
+        .flag {
+          width: 30px;
+          height: auto;
+          cursor: pointer;
+          border-radius: 2px;
         }
 
         .logo {
@@ -50,8 +83,12 @@
 
         .nav-links {
             display: flex;
-            list-style: none;
-            gap: 2rem;
+              list-style: none;
+              gap: 1.5rem;
+              margin: 0;
+              padding: 0;
+              width: auto;
+
         }
 
         .nav-links a {

@@ -7,12 +7,13 @@
     <link rel="stylesheet" href="style.css">
     <style></style>
 </head>
+
 <body>
 <!-- Navigation -->
 <nav>
     <div class="nav-container">
         <a href="#" class="logo">MMQ</a>
-        <ul class="nav-links">
+        <ul id="nav-es" class="nav-links lang-content es">
             <li><a href="#home">Inicio</a></li>
             <li><a href="#about">Formación</a></li>
             <li><a href="#skills">Habilidades</a></li>
@@ -20,6 +21,22 @@
             <li><a href="#projects">Proyectos</a></li>
             <li><a href="#contact">Contacto</a></li>
         </ul>
+        <ul id="nav-en" class="nav-links lang-content en" hidden>
+            <!-- English copies (hidden by default) -->
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">Education</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+
+        <!-- Language toggle pushed to the right -->
+        <div class="lang-wrapper">
+            <button id="langBtn" class="lang-toggle">EN</button>
+            <img id="flag-es" class="flag" src="Spain_Flag.svg" alt="ES">
+            <img id="flag-en" class="flag" src="UK_Flag.svg" alt="EN">
+        </div>
     </div>
 </nav>
 
@@ -225,27 +242,7 @@
 <footer>
     <p>&copy; 2025 Miguel Molina Querol. Todos los derechos reservados.</p>
 </footer>
-
-<script>
-    // Smooth scrolling for navigation links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
-        });
-    });
-
-    // Add scroll effect to navigation
-    window.addEventListener('scroll', function() {
-        const nav = document.querySelector('nav');
-        if (window.scrollY > 100) {
-            nav.style.backgroundColor = 'rgba(10, 25, 47, 0.98)';
-        } else {
-            nav.style.backgroundColor = 'rgba(10, 25, 47, 0.95)';
-        }
-    });
-</script>
+<script src="smooth-scroll.js"></script>
+<script src="lang-toggle.js"></script>
 </body>
 </html>
