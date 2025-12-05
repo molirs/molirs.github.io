@@ -11,4 +11,4 @@
 
 ---
 
-![Vista previa del portfolio](preview.png)
+![Vista previa del portfolio](Preview.png)
