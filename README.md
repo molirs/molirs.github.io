@@ -3,7 +3,7 @@
 **Dark-themed portfolio** built with plain HTML & CSS.  
 🔗 **See it live:**  https://molirs.github.io
 
-![Vista previa del portfolio](preview.png)
+![Vista previa del portfolio](Preview.png)
 
 ---
 
