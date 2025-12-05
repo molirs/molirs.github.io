@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miguel Molina Querol | Desarrollador AI/ML</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #0a192f;
+            --secondary-color: #112240;
+            --accent-color: #64ffda;
+            --text-color: #ccd6f6;
+            --text-secondary: #8892b0;
+            --bg-dark: #020c1b;
+            --light-gray: #f8f9fa;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-dark);
+        }
+
+        /* Navigation */
+        nav {
+            background-color: rgba(10, 25, 47, 0.95);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: var(--accent-color);
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            text-align: center;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.2s forwards;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.4s forwards;
+        }
+
+        .achievement-badge {
+            display: inline-block;
+            background-color: rgba(100, 255, 218, 0.2);
+            color: var(--accent-color);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin: 0.5rem;
+            font-weight: bold;
+            border: 1px solid var(--accent-color);
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.6s forwards;
+        }
+
+        /* About Section */
+        .about {
+            padding: 4rem 2rem;
+            background-color: var(--primary-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--text-color);
+        }
+
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .education-card {
+            background: var(--secondary-color);
+            padding: 2rem;
+            border-radius: 10px;
+            border: 1px solid rgba(100, 255, 218, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .education-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+        }
+
+        .education-card h3 {
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .education-card .institution {
+            color: var(--text-secondary);
+            font-style: italic;
+            margin-bottom: 0.5rem;
+        }
+
+        .grade-highlight {
+            color: var(--accent-color);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .achievement-banner {
+            background: linear-gradient(45deg, var(--accent-color), #52e3c2);
+            color: var(--primary-color);
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            margin: 2rem 0;
+            font-weight: bold;
+        }
+
+        /* Skills Section */
+        .skills {
+            padding: 4rem 2rem;
+            background-color: var(--bg-dark);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .skill-category {
+            background: var(--secondary-color);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 1px solid rgba(100, 255, 218, 0.1);
+        }
+
+        .skill-category h3 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            padding: 0.3rem 0;
+            color: var(--text-color);
+        }
+
+        .skill-list li:before {
+            content: "▸ ";
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        /* Experience Section */
+        .experience {
+            padding: 4rem 2rem;
+            background-color: var(--primary-color);
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline-item {
+            background: var(--secondary-color);
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 10px;
+            border-left: 4px solid var(--accent-color);
+            border: 1px solid rgba(100, 255, 218, 0.1);
+        }
+
+        .timeline-item h3 {
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-item .company {
+            color: var(--text-secondary);
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-item .date {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Projects Section */
+        .projects {
+            padding: 4rem 2rem;
+            background-color: var(--bg-dark);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background: var(--secondary-color);
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid rgba(100, 255, 218, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+        }
+
+        .project-header {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: var(--accent-color);
+            padding: 1.5rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(100, 255, 218, 0.2);
+        }
+
+        .project-content {
+            padding: 1.5rem;
+            color: var(--text-color);
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tech-tag {
+            background-color: rgba(100, 255, 218, 0.1);
+            color: var(--accent-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            border: 1px solid rgba(100, 255, 218, 0.3);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 4rem 2rem;
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            text-align: center;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+            }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            }
+
+        .contact-links a:hover {
+            color: white !important;
+}
+
+        /* Footer */
+        footer {
+            background-color: var(--bg-dark);
+            color: var(--text-secondary);
+            text-align: center;
+            padding: 1rem;
+            border-top: 1px solid rgba(100, 255, 218, 0.1);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .education-grid,
+            .skills-grid,
+            .projects-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- Navigation -->
+<nav>
+    <div class="nav-container">
+        <a href="#" class="logo">MMQ</a>
+        <ul class="nav-links">
+            <li><a href="#home">Inicio</a></li>
+            <li><a href="#about">Formación</a></li>
+            <li><a href="#skills">Habilidades</a></li>
+            <li><a href="#experience">Experiencia</a></li>
+            <li><a href="#projects">Proyectos</a></li>
+            <li><a href="#contact">Contacto</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section id="home" class="hero">
+    <div class="hero-content">
+        <h1>Miguel Molina Querol</h1>
+        <p class="subtitle">Desarrollador de Software | Inteligencia Artificial y Big Data</p>
+        <p>Programador en formación con especialización en Inteligencia Artificial y Big Data.
+            Apasionado por la programación y la resolución de problemas complejos.</p>
+        <div>
+            <span class="achievement-badge">🚀 AWS DeepRacer - 3er Clasificado Nacional</span>
+            <span class="achievement-badge">📊 Nota Media: 9.4 en IA & Big Data</span>
+            <span class="achievement-badge">🏆 Matrícula de Honor en Sistemas de Aprendizaje Automático</span>
+        </div>
+    </div>
+</section>
+
+<!-- Education Section -->
+<section id="about" class="about">
+    <div class="container">
+        <h2 class="section-title">Formación Académica</h2>
+        <div class="education-grid">
+            <div class="education-card">
+                <h3>Inteligencia Artificial y Big Data</h3>
+                <p class="institution">Campus Digital | Zaragoza</p>
+                <p>Junio 2025 - Julio 2025</p>
+                <p class="grade-highlight">Nota Media: 9.4</p>
+                <p><strong>Matrícula de Honor:</strong> Sistemas de Aprendizaje Automático (10/10)</p>
+            </div>
+
+            <div class="education-card">
+                <h3>Desarrollo de Aplicaciones Multiplataforma</h3>
+                <p class="institution">IES Pablo Serrano | Zaragoza</p>
+                <p>Septiembre 2022 - Mayo 2024</p>
+                <p class="grade-highlight">Nota Media: 8.5</p>
+                <p><strong>TFG:</strong> Videojuego con Unreal Engine 5 (10/10)</p>
+            </div>
+
+            <div class="education-card">
+                <h3>Ingeniería Mecánica</h3>
+                <p class="institution">EINA Universidad de Zaragoza</p>
+                <p>Septiembre 2018 - Junio 2021</p>
+                <p class="grade-highlight">126 créditos completos | Nota: 6.9</p>
+                <p><strong>Matrícula de Honor:</strong> Fundamentos de Programación (10/10)</p>
+            </div>
+        </div>
+
+        <div class="achievement-banner">
+            🏆 AWS DeepRacer - 3er Clasificado en Evento Nacional de Centros de Formación (Madrid, Enero 2025)
+        </div>
+    </div>
+</section>
+
+<!-- Skills Section -->
+<section id="skills" class="skills">
+    <div class="container">
+        <h2 class="section-title">Habilidades Técnicas</h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3>Lenguajes de Programación</h3>
+                <ul class="skill-list">
+                    <li>Java</li>
+                    <li>Python</li>
+                </ul>
+            </div>
+
+            <div class="skill-category">
+                <h3>Lenguajes de Marcas</h3>
+                <ul class="skill-list">
+                    <li>XML</li>
+                    <li>JSON</li>
+                    <li>HTML</li>
+                    <li>CSS</li>
+                </ul>
+            </div>
+
+            <div class="skill-category">
+                <h3>Cloud & Servicios</h3>
+                <ul class="skill-list">
+                    <li>AWS Cloud Practitioner</li>
+                    <li>AWS DeepRacer</li>
+                    <li>AWS Solutions Architect Associate (Estudiando)</li>
+                </ul>
+            </div>
+
+            <div class="skill-category">
+                <h3>Otras Habilidades</h3>
+                <ul class="skill-list">
+                    <li>Manejo en terminal Linux</li>
+                    <li>Unreal Engine 5</li>
+                    <li>SQL & NoSQL DB</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Experience Section -->
+<section id="experience" class="experience">
+    <div class="container">
+        <h2 class="section-title">Experiencia Profesional</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <h3>Desarrollador de Software (Prácticas)</h3>
+                <p class="company">ISYC | Zaragoza, Aragón</p>
+                <p class="date">Marzo 2024 - Junio 2024</p>
+                <p>Desarrollo en Java de un CRM propietario de ISYC (OnCustomer). Participación en todas las fases del ciclo de desarrollo, desde la planificación hasta la implementación y testing.</p>
+            </div>
+
+            <div class="timeline-item">
+                <h3>Encuestador</h3>
+                <p class="company">GFK | Zaragoza, Aragón</p>
+                <p class="date">Junio 2019 - Septiembre 2019</p>
+                <p>Recolección y análisis de datos para estudios de mercado. Desarrollo de habilidades en comunicación y análisis de información.</p>
+            </div>
+
+            <div class="timeline-item">
+                <h3>Guía Turístico</h3>
+                <p class="company">Ayuntamiento de Beceite | Beceite, Aragón</p>
+                <p class="date">Agosto 2017 - Agosto 2019</p>
+                <p>Atención al visitante y gestión de grupos turísticos. Desarrollo de habilidades interpersonales y de comunicación en múltiples idiomas.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Projects Section -->
+<section id="projects" class="projects">
+    <div class="container">
+        <h2 class="section-title">Proyectos Destacados</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>Videojuego con Unreal Engine 5</h3>
+                    <p>Trabajo de Fin de Grado</p>
+                </div>
+                <div class="project-content">
+                    <p>Desarrollo de un videojuego completo utilizando Unreal Engine 5. Implementación de mecánicas de juego, diseño de niveles y optimización de rendimiento.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Unreal Engine 5</span>
+                        <span class="tech-tag">C++</span>
+                        <span class="tech-tag">Blueprints</span>
+                    </div>
+                    <p><strong>Calificación:</strong> 10/10 - Matrícula de Honor</p>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>CRM OnCustomer</h3>
+                    <p>Proyecto de Prácticas ISYC</p>
+                </div>
+                <div class="project-content">
+                    <p>Desarrollo de un CRM propietario en Java para gestión de clientes. Participación desarrollo de funcionalidades dentro de producción.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Java</span>
+                        <span class="tech-tag">Jenkins</span>
+                        <span class="tech-tag">Git</span>
+                        <span class="tech-tag">Mercurial</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>AWS DeepRacer</h3>
+                    <p>Competición Nacional</p>
+                </div>
+                <div class="project-content">
+                    <p>Desarrollo de algoritmos de función de recompensa en modelos de aprendizaje automático para vehículos autónomos.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Machine Learning</span>
+                        <span class="tech-tag">AWS</span>
+                        <span class="tech-tag">Python</span>
+                    </div>
+                    <p><strong>Logro:</strong> 3er Clasificado Nacional</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="contact">
+    <div class="container">
+        <div class="contact-content">
+            <h2 class="section-title" style="color: var(--text-color);">Contacto</h2>
+            <p style="color: var(--text-secondary); margin-bottom: 2rem; font-size: 1.1rem;">
+                Siempre estoy interesado en nuevas oportunidades y proyectos interesantes.
+                Si tienes una pregunta o solo quieres saludar, no dudes en contactarme.
+            </p>
+            <div class="contact-links">
+                <a href="mailto:mmquerol.work@gmail.com" style="color: var(--accent-color); text-decoration: none; font-size: 1.2rem; transition: color 0.3s ease;">Email</a>
+                <a href="https://www.linkedin.com/in/miguel-molina-querol" style="color: var(--accent-color); text-decoration: none; font-size: 1.2rem; transition: color 0.3s ease;">LinkedIn</a>
+                <a href="#" style="color: var(--accent-color); text-decoration: none; font-size: 1.2rem; transition: color 0.3s ease;">GitHub</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <p>&copy; 2025 Miguel Molina Querol. Todos los derechos reservados.</p>
+</footer>
+
+<script>
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+
+    // Add scroll effect to navigation
+    window.addEventListener('scroll', function() {
+        const nav = document.querySelector('nav');
+        if (window.scrollY > 100) {
+            nav.style.backgroundColor = 'rgba(10, 25, 47, 0.98)';
+        } else {
+            nav.style.backgroundColor = 'rgba(10, 25, 47, 0.95)';
+        }
+    });
+</script>
+</body>
+</html>
