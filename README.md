@@ -1,5 +1,3 @@
-@"
-
 \# 🚀 Miguel Molina Querol – Portfolio Web
 
 
@@ -27,6 +25,4 @@
 &nbsp; </a>
 
 </p>
-
-"@ 
 
